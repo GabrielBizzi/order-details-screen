@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "express": "^4.17.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1"
   },
   "scripts": {
+    "dev": "concurrently \"yarn api\" \"yarn start\"",
+    "api": "http-server ./api -p 5000 -d false --cors -s",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -27,5 +30,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.1",
+    "faker": "^4.1.0",
+    "http-server": "^0.11.1",
+    "rimraf": "^2.6.3"
   }
 }

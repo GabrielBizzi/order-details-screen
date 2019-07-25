@@ -1,0 +1,43 @@
+{
+  "id": 259802,
+  "name": "Maria",
+  "email": "maria@email.com",
+  "address": {
+    "street": "Esther Avenida",
+    "number": 288,
+    "city": "Robertode Nossa Senhora",
+    "state": "AC",
+    "postcode": "34522"
+  },
+  "total": "3833.00",
+  "status": "Pagamento aprovado",
+  "payment_method": "Cartão de Crédito",
+  "items": [
+    {
+      "name": "Produto #1",
+      "qty": 2,
+      "price": "227.00"
+    },
+    {
+      "name": "Produto #2",
+      "qty": 3,
+      "price": "519.00"
+    },
+    {
+      "name": "Produto #3",
+      "qty": 2,
+      "price": "674.00"
+    },
+    {
+      "name": "Produto #4",
+      "qty": 1,
+      "price": "464.00"
+    }
+  ],
+  "freight": {
+    "price": "10.00",
+    "from": 1,
+    "to": 7
+  },
+  "date": "26/04/2019"
+}

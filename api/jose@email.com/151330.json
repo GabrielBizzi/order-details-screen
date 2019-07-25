@@ -1,0 +1,38 @@
+{
+  "id": 151330,
+  "name": "Jose",
+  "email": "jose@email.com",
+  "address": {
+    "street": "Oliveira Avenida",
+    "number": 31,
+    "city": "Xavierde Nossa Senhora",
+    "state": "AC",
+    "postcode": "50793"
+  },
+  "total": "2951.00",
+  "status": "Pedido em transporte",
+  "payment_method": "Cartão de Crédito",
+  "items": [
+    {
+      "name": "Produto #1",
+      "qty": 2,
+      "price": "629.00"
+    },
+    {
+      "name": "Produto #2",
+      "qty": 1,
+      "price": "773.00"
+    },
+    {
+      "name": "Produto #3",
+      "qty": 2,
+      "price": "456.00"
+    }
+  ],
+  "freight": {
+    "price": "8.00",
+    "from": 3,
+    "to": 9
+  },
+  "date": "09/02/2019"
+}

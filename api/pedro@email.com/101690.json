@@ -1,0 +1,43 @@
+{
+  "id": 101690,
+  "name": "Pedro",
+  "email": "pedro@email.com",
+  "address": {
+    "street": "Silva Rodovia",
+    "number": 118,
+    "city": "Município de Hélio",
+    "state": "MS",
+    "postcode": "86019-545"
+  },
+  "total": "1812.00",
+  "status": "Pedido em transporte",
+  "payment_method": "Cartão de Crédito",
+  "items": [
+    {
+      "name": "Produto #1",
+      "qty": 1,
+      "price": "998.00"
+    },
+    {
+      "name": "Produto #2",
+      "qty": 2,
+      "price": "196.00"
+    },
+    {
+      "name": "Produto #3",
+      "qty": 1,
+      "price": "403.00"
+    },
+    {
+      "name": "Produto #4",
+      "qty": 2,
+      "price": "5.00"
+    }
+  ],
+  "freight": {
+    "price": "9.00",
+    "from": 3,
+    "to": 7
+  },
+  "date": "21/02/2019"
+}

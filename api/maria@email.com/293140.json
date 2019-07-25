@@ -1,0 +1,38 @@
+{
+  "id": 293140,
+  "name": "Maria",
+  "email": "maria@email.com",
+  "address": {
+    "street": "Esther Avenida",
+    "number": 288,
+    "city": "Robertode Nossa Senhora",
+    "state": "AC",
+    "postcode": "34522"
+  },
+  "total": "2491.00",
+  "status": "Pedido em separação",
+  "payment_method": "Boleto bancário",
+  "items": [
+    {
+      "name": "Produto #1",
+      "qty": 2,
+      "price": "441.00"
+    },
+    {
+      "name": "Produto #2",
+      "qty": 2,
+      "price": "711.00"
+    },
+    {
+      "name": "Produto #3",
+      "qty": 2,
+      "price": "91.00"
+    }
+  ],
+  "freight": {
+    "price": "5.00",
+    "from": 3,
+    "to": 4
+  },
+  "date": "28/05/2019"
+}
