@@ -32,3 +32,14 @@ Exemplos:
 * http://localhost:5000/jose@email.com/267014.json
 
 Boa sorte!
+
+## Base para layout
+
+### Login
+![Login](images/login.png?raw=true "Login")
+
+### Pedidos
+![Pedidos](images/pedidos.png?raw=true "Pedidos")
+
+### Detalhes do pedido
+![Detalhes do pedido](images/detalhes-do-pedido.png?raw=true "Detalhes do pedido")
