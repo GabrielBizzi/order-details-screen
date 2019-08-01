@@ -1,6 +1,6 @@
 # Front-End Test
 
-Clone este projeto e crie um pull request com o resultado final.
+Clone este projeto e mande um .zip com o resultado final.
 
 ## O que fazer?
 
@@ -33,7 +33,7 @@ Exemplos:
 
 Boa sorte!
 
-## Base para layout
+## Base para layout (não fazer exatamente igual)
 
 ### Login
 ![Login](images/login.png?raw=true "Login")
