@@ -9,7 +9,8 @@ Clone este projeto e mande um .zip com o resultado final.
 3. Listar algumas informações dos pedidos ou uma mensagem de que não há pedidos;
 4. Campo para filtrar pelo número do pedido
 5. Ao clicar num pedido exibir as informações completas;
-6. Ter opção de "deslogar" para voltar para a tela de email.
+6. Ter opção de "deslogar" para voltar para a tela de email;
+7. Layout responsivo, com preferência para a versão MOBILE.
 
 ## Iniciar projeto
 
