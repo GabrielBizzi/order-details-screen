@@ -1,0 +1,28 @@
+.header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  box-shadow: 0 2px 12px 1px rgba(0, 0, 0, 0.2);
+  background-color: var(--color-background);
+  font-weight: bolder;
+  height: 56px;
+  z-index: 10;
+}
+
+.inner {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.link {
+  text-decoration: none;
+  border-bottom: 2px solid var(--color-foreground);
+  color: inherit;
+}
+
+.placeholder {
+  height: 56px;
+}

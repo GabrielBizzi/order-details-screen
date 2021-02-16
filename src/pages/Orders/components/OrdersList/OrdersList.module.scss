@@ -1,0 +1,38 @@
+@import './../../../../mixins.scss';
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 12px;
+  row-gap: 12px;
+
+  @include on-mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 12px;
+  text-align: right;
+}
+
+.label {
+  font-weight: bolder;
+  margin-bottom: 6px;
+  text-align: left;
+}
+
+.button {
+  text-align: center;
+  padding: 12px 6px;
+  background-color: var(--color-foreground);
+  display: block;
+  margin-top: 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--color-background);
+  font-weight: bolder;
+  text-transform: uppercase;
+}
