@@ -8,7 +8,7 @@ export function OrdersGrid({ children }: PropsWithChildren<{}>) {
   return <div className={classes.container}>{children}</div>;
 }
 
-export function OrdersList({ orders }: { orders: OrderSummary[] }) {
+export function OrdersList({ orders }:{ orders: OrderSummary[] }) {
   return (
     <OrdersGrid>
       {orders.map(order => (
