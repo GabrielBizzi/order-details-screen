@@ -1,67 +1,79 @@
 import React, { PropsWithChildren } from 'react';
 import styles from './OrdersDetails.module.scss';
+import card from '../../../../assets/images/icon-card.png';
+import boleto from '../../../../assets/images/boleto-icon.png'
+
+import { useQuery } from 'react-query';
+
+import { useParams } from 'react-router';
+
+import { getOrderDetails } from '../../../../core/orders';
+import { Link } from 'react-router-dom';
 
 export function OrdersGrid({ children }: PropsWithChildren<{}>) {
     return <div className={styles.container}>{children}</div>;
 }
 
 export function OrdersDetails(){
-  return (
+  const { id } = useParams<{id: string}>();
 
+  const { data: orderDetails } = useQuery('orders', () => getOrderDetails(id));
+
+  return (
     <div className={styles.container}>
-        <div className={styles.detailsOrder}>
-            <h1>Detalhes do seu pedido, Maria</h1>
-            <p>Pedido: #123456789</p>
-        </div>
-        <div className={styles.containerInfo}>
-            <div className={styles.product}>
-                <div className={styles.productInfo}>
-                    <div className={styles.rectangle}></div>
-                    <div className={styles.productName}>
-                        <p>Booster 30ml</p>
-                        <span>R$ 200,00</span>
+        <div className={styles.detailsGrid}>
+            <div className={styles.detailsOrder}>
+                <h1>Detalhes do seu pedido{`, ${orderDetails?.name}` || ''}</h1>
+                <p>Pedido: #{orderDetails?.id}</p>
+            </div>
+            <div className={styles.containerInfo}>
+                {orderDetails?.items.map(item => (
+                    <div key={item.name}>
+                        <div className={styles.product}>
+                            <div className={styles.productInfo}>
+                                <div className={styles.rectangle}></div>
+                                <div className={styles.productName}>
+                                <p>{item.name}</p>
+                                    <span>{
+                                        Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(Number(item.price))
+                                    }</span>
+                                </div>
+                            </div>
+                            <div className={styles.quantity}>
+                                <p>{item.qty}<span>x</span></p>
+                            </div>
+                        </div>
+                        <hr/>
                     </div>
+                ))}
+            </div>
+        </div>
+        <div className={styles.shippingMethodGrid}>
+            <div className={styles.shippingOrder}>
+                <div className={styles.shippingInfo}>
+                    <h1>Entregar em</h1>
+                    <Link to="#">Mudar</Link>
                 </div>
-                <div className={styles.quantity}>
-                    <p>1<span>x</span></p>
+                <div className={styles.shippingAddress}>
+                    <p>{orderDetails?.address.street}, {orderDetails?.address.number}</p>
+                    <p>{orderDetails?.address.city} - {orderDetails?.address.state} - {orderDetails?.address.postcode}</p>
                 </div>
             </div>
-            <div className={styles.product}>
-                <div className={styles.productInfo}>
-                    <div className={styles.rectangle}></div>
-                    <div className={styles.productName}>
-                        <p>Color 30ml</p>
-                        <span>R$ 200,00</span>
+            <div className={styles.methodPayment}>
+                <div className={styles.methodContent}>
+                    <h1>Metódo de pagamento</h1>
+                    <Link to="#">Mudar</Link>
+                </div>
+                <div className={styles.methodInfo}>
+                    <div>
+                        <p>{orderDetails?.payment_method}</p>
                     </div>
-                </div>
-                <div className={styles.quantity}>
-                    <p>2<span>x</span></p>
+                    { orderDetails?.payment_method === 'Boleto bancário' ? ( <img src={boleto} alt="Boleto bancário"/> ) : ( <img src={card} alt="Cartão de Cŕedito"/> )}
+                    
                 </div>
             </div>
         </div>
-        <div className={styles.shippingOrder}>
-            <div className={styles.shippingInfo}>
-                <h1>Entregar em</h1>
-                <p>Mudar</p>
-            </div>
-            <div className={styles.shippingAddress}>
-                <p>Av. Mofarrej, 825 - Galpão 5 - Vl Leopoldina</p>
-                <p>São Paulo - SP - 03342-010</p>
-            </div>
-        </div>
-        <div className={styles.methodPayment}>
-            <div className={styles.methodContent}>
-                <h1>Metódo de pagamento</h1>
-                <p>Mudar</p>
-            </div>
-            <div className={styles.methodInfo}>
-                <div>
-                    <p>Av. Mofarrej, 825 - Galpão 5 - Vl Leopoldina</p>
-                    <p>São Paulo - SP - 03342-010</p>
-                </div>
-                <div>r</div>
-            </div>
-        </div>
+        
         <div className={styles.freight}>
             <div className={styles.freightForm}>
                 <div className={styles.freightContent}>
@@ -74,10 +86,10 @@ export function OrdersDetails(){
                 </div>
                 <div className={styles.freightContent}>
                     <p>
-                        de 5 a 7 dias
+                        de {orderDetails?.freight.from} a {orderDetails?.freight.to} dias
                     </p>
                     <p>
-                        R$ 20,00
+                        {Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(Number(orderDetails?.freight.price))}
                     </p>
                 </div>
             </div>
@@ -88,42 +100,44 @@ export function OrdersDetails(){
                     Total:
                 </p>
                 <p>
-                    R$ 620,00
+                    {Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(Number(orderDetails?.total))}
                 </p>
             </div>
             
         </div>
+        
         <div className={styles.followOrder}>
             <h1>
                 Acompanhe seu Pedido
             </h1>
             <ul className={styles.followEvents}>
                 <li>
-                    <span className={styles.event}></span>
+                    { orderDetails?.status === 'Aguardando pagamento' ? ( <span className={styles.afterEvent} style={{background: 'var(--finished)'}}></span> ) : ( <span className={styles.afterEvent} style={{background: 'var(--secundary-content-color)'}}></span> )}
+                    
                     <span className={styles.eventTitle}>
                         Aguardando Pagamento
                     </span>
                 </li>
                 <li>
-                    <span className={styles.event}></span>
+                    { orderDetails?.status === 'Pagamento aprovado' ? ( <span className={styles.afterEvent} style={{background: 'var(--finished)'}}></span> ) : ( <span className={styles.afterEvent} style={{background: 'var(--secundary-content-color)'}}></span> )}
                     <span className={styles.eventTitle}>
-                        Confirmação de Pagamento
+                        Pagamento Aprovado
                     </span>
                 </li>
                 <li>
-                    <span className={styles.event}></span>
+                    { orderDetails?.status === 'Pedido em separação' ? ( <span className={styles.afterEvent} style={{background: 'var(--finished)'}}></span> ) : ( <span className={styles.afterEvent} style={{background: 'var(--secundary-content-color)'}}></span> )}
                     <span className={styles.eventTitle}>
                         Pedido em Separação
                     </span>
                 </li>
                 <li>
-                    <span className={styles.event}></span>
+                    { orderDetails?.status === 'Pedido em transporte' ? ( <span className={styles.afterEvent} style={{background: 'var(--finished)'}}></span> ) : ( <span className={styles.afterEvent} style={{background: 'var(--secundary-content-color)'}}></span> )}
                     <span className={styles.eventTitle}>
                         Pedido em Transporte
                     </span>
                 </li>
                 <li>
-                    <span className={styles.event}></span>
+                    { orderDetails?.status === 'Pedido entregue' ? ( <span className={styles.afterEvent} style={{background: 'var(--finished)'}}></span> ) : ( <span className={styles.afterEvent} style={{background: 'var(--secundary-content-color)'}}></span> )}
                     <span className={styles.eventTitle}>
                         Pedido Entregue
                     </span>
