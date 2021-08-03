@@ -12,7 +12,7 @@
     "node-sass": "^4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-query": "^3.9.7",
+    "react-query": "^3.18.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.0.1",
     "remove-accents": "^0.4.2",
