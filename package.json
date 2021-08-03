@@ -16,7 +16,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.0.1",
     "remove-accents": "^0.4.2",
-    "typescript": "^4.1.5"
+    "typescript": "^4.3.5"
   },
   "scripts": {
     "dev": "concurrently \"yarn api\" \"yarn start\"",
